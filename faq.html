@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FAQ — Angelo Repairs</title>
+  <meta name="description" content="Toutes les réponses à vos questions sur Angelo Repairs : délais, tarifs, types de réparations, localisation, sécurité des données. Dépannage informatique à Cadenet (84).">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Syne:wght@400;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root{--bg:#0a0a0a;--bg2:#111111;--bg3:#1a1a1a;--border:#2a2a2a;--accent:#ff6600;--accent2:#ff8c00;--text:#e8e8e8;--text-muted:#888;--text-dim:#555;--white:#ffffff;--radius:4px;--font-head:'Syne',sans-serif;--font-mono:'Space Mono',monospace;--font-body:'Inter',sans-serif}
+    *{margin:0;padding:0;box-sizing:border-box}
+    body{background:var(--bg);color:var(--text);font-family:var(--font-body);font-size:16px;line-height:1.6}
+    nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(10,10,10,0.96);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:0 2rem;height:64px;display:flex;align-items:center;justify-content:space-between}
+    .nav-logo{font-family:var(--font-head);font-weight:800;font-size:1.1rem;color:var(--white);text-decoration:none}
+    .nav-logo span{color:var(--accent)}
+    .nav-links{display:flex;gap:0.2rem;list-style:none}
+    .nav-links a{color:var(--text-muted);text-decoration:none;font-size:0.82rem;font-weight:500;padding:0.4rem 0.75rem;border-radius:var(--radius);transition:all 0.2s}
+    .nav-links a:hover{color:var(--white);background:var(--bg3)}
+    .nav-links a.active{color:var(--accent)}
+    .nav-toggle{display:none;background:none;border:none;cursor:pointer;padding:0.5rem}
+    .nav-toggle span{display:block;width:22px;height:2px;background:var(--text);margin:4px 0}
+    .hero-grid{position:fixed;inset:0;background-image:linear-gradient(rgba(255,102,0,0.03) 1px,transparent 1px),linear-gradient(90deg,rgba(255,102,0,0.03) 1px,transparent 1px);background-size:64px 64px;pointer-events:none;z-index:0}
+    .page-header{padding:7rem 2rem 3rem;max-width:800px;margin:0 auto;position:relative;z-index:1}
+    .section-label{font-family:var(--font-mono);font-size:0.72rem;color:var(--accent);letter-spacing:0.15em;text-transform:uppercase;margin-bottom:0.75rem}
+    .accent-line{width:40px;height:3px;background:var(--accent);margin-bottom:1.5rem;border-radius:2px}
+    h1{font-family:var(--font-head);font-size:clamp(2.5rem,5vw,4rem);font-weight:800;color:var(--white);letter-spacing:-0.03em;margin-bottom:1rem;line-height:1.05}
+    h1 em{font-style:normal;color:var(--accent)}
+    .page-sub{font-size:1rem;color:var(--text-muted);max-width:500px;font-weight:300;line-height:1.75}
+    .wrap{max-width:800px;margin:0 auto;padding:0 2rem 5rem;position:relative;z-index:1}
+
+    /* FAQ */
+    .faq-list{display:flex;flex-direction:column;gap:0.75rem;margin-bottom:3rem}
+    .faq-item{background:var(--bg2);border:1px solid var(--border);border-radius:8px;overflow:hidden;transition:border-color 0.2s}
+    .faq-item.open{border-color:rgba(255,102,0,0.3)}
+    .faq-q{
+      display:flex;align-items:center;justify-content:space-between;
+      padding:1.25rem 1.5rem;cursor:pointer;gap:1rem;
+      font-family:var(--font-head);font-size:0.98rem;font-weight:700;color:var(--white);
+      transition:background 0.15s;
+    }
+    .faq-q:hover{background:var(--bg3)}
+    .faq-q .q-icon{font-size:1.1rem;flex-shrink:0}
+    .faq-q .chevron{color:var(--accent);font-size:0.8rem;transition:transform 0.25s;flex-shrink:0}
+    .faq-item.open .chevron{transform:rotate(180deg)}
+    .faq-a{
+      max-height:0;overflow:hidden;
+      transition:max-height 0.35s ease,padding 0.25s ease;
+      padding:0 1.5rem;font-size:0.9rem;color:var(--text-muted);line-height:1.7;
+    }
+    .faq-item.open .faq-a{max-height:300px;padding:0 1.5rem 1.25rem}
+    .faq-a strong{color:var(--white)}
+    .faq-a ul{padding-left:1.25rem;margin-top:0.5rem}
+    .faq-a ul li{margin-bottom:0.3rem}
+
+    .faq-category{margin-bottom:0.5rem;margin-top:2rem}
+    .faq-category:first-child{margin-top:0}
+    .cat-label{font-family:var(--font-mono);font-size:0.7rem;color:var(--accent);letter-spacing:0.15em;text-transform:uppercase;margin-bottom:0.75rem}
+
+    .cta-box{background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:2.5rem;text-align:center;position:relative;overflow:hidden}
+    .cta-box::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--accent),var(--accent2))}
+    .cta-box h2{font-family:var(--font-head);font-size:1.4rem;font-weight:800;color:var(--white);margin-bottom:0.75rem}
+    .cta-box p{color:var(--text-muted);font-size:0.9rem;margin-bottom:1.5rem}
+    .btn{display:inline-flex;align-items:center;gap:0.5rem;padding:0.85rem 1.8rem;border-radius:var(--radius);font-weight:600;font-size:0.9rem;text-decoration:none;cursor:pointer;border:none;transition:all 0.22s;font-family:var(--font-body)}
+    .btn-primary{background:var(--accent);color:#fff}
+    .btn-primary:hover{background:var(--accent2);transform:translateY(-1px);box-shadow:0 8px 28px rgba(255,102,0,0.35)}
+    .btn-outline{background:transparent;color:var(--text);border:1px solid var(--border)}
+    .btn-outline:hover{border-color:var(--accent);color:var(--accent);background:rgba(255,102,0,0.05)}
+
+    footer{background:var(--bg2);border-top:1px solid var(--border);padding:3rem 2rem 2rem;position:relative;z-index:1}
+    .footer-inner{max-width:1100px;margin:0 auto}
+    .footer-top{display:flex;justify-content:space-between;align-items:flex-start;gap:2rem;flex-wrap:wrap;margin-bottom:2rem}
+    .footer-brand h2{font-family:var(--font-head);font-size:1.1rem;font-weight:800;color:var(--white);margin-bottom:0.4rem}
+    .footer-brand p{font-size:0.82rem;color:var(--text-muted);max-width:240px}
+    .footer-links{display:flex;gap:2.5rem;flex-wrap:wrap}
+    .footer-col h4{font-size:0.7rem;color:var(--white);text-transform:uppercase;letter-spacing:0.12em;margin-bottom:1rem;font-family:var(--font-mono)}
+    .footer-col ul{list-style:none}
+    .footer-col ul li{margin-bottom:0.4rem}
+    .footer-col ul li a{font-size:0.82rem;color:var(--text-muted);text-decoration:none;transition:color 0.2s}
+    .footer-col ul li a:hover{color:var(--accent)}
+    .social-links{display:flex;gap:0.6rem;margin-top:1rem}
+    .social-link{width:32px;height:32px;display:flex;align-items:center;justify-content:center;background:var(--bg3);border:1px solid var(--border);border-radius:var(--radius);color:var(--text-muted);text-decoration:none;font-size:0.75rem;transition:all 0.2s}
+    .social-link:hover{border-color:var(--accent);color:var(--accent)}
+    .footer-bottom{padding-top:1.5rem;border-top:1px solid var(--border);display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem}
+    .footer-bottom p{font-size:0.78rem;color:var(--text-dim)}
+    .footer-bottom a{color:var(--text-dim);text-decoration:none;transition:color 0.2s}
+    .footer-bottom a:hover{color:var(--accent)}
+    @media(max-width:600px){
+      .nav-links{display:none}.nav-links.open{display:flex;flex-direction:column;position:fixed;top:64px;left:0;right:0;background:var(--bg2);border-bottom:1px solid var(--border);padding:1.5rem;gap:0.5rem}
+      .nav-toggle{display:block}
+    }
+  </style>
+</head>
+<body>
+<div class="hero-grid"></div>
+<nav>
+  <a href="index.html" class="nav-logo">Angelo<span>.</span>Repairs</a>
+  <button class="nav-toggle" onclick="document.querySelector('.nav-links').classList.toggle('open')"><span></span><span></span><span></span></button>
+  <ul class="nav-links">
+    <li><a href="index.html">Accueil</a></li><li><a href="services.html">Services</a></li>
+    <li><a href="tarifs.html">Tarifs</a></li><li><a href="contact.html">Contact</a></li>
+    <li><a href="comment-ca-marche.html">Comment ça marche</a></li>
+    <li><a href="avis.html">Avis</a></li><li><a href="faq.html" class="active">FAQ</a></li>
+  </ul>
+</nav>
+
+<div class="page-header">
+  <p class="section-label">// Questions fréquentes</p>
+  <div class="accent-line"></div>
+  <h1>FAQ</h1>
+  <p class="page-sub">Toutes les réponses aux questions les plus courantes sur mes services et mon fonctionnement.</p>
+</div>
+
+<div class="wrap">
+  <div class="faq-list">
+
+    <div class="faq-category"><p class="cat-label">// Général</p></div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggle(this)">
+        <span class="q-icon">🔧</span>
+        <span>Est-ce que tu fais les réparations chez moi ?</span>
+        <span class="chevron">▼</span>
+      </div>
+      <div class="faq-a">Non, je réalise les réparations <strong>chez moi</strong> après réception de votre appareil. Je vous tiens informé par message à chaque étape du processus.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggle(this)">
+        <span class="q-icon">🕒</span>
+        <span>Combien de temps prend une réparation ?</span>
+        <span class="chevron">▼</span>
+      </div>
+      <div class="faq-a">Cela dépend de la nature du problème et de la nécessité d'éventuellement commander une pièce. En général, le délai est de <strong>3 à 14 jours ouvrés</strong>. Un délai précis vous sera communiqué dès l'acceptation du devis.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggle(this)">
+        <span class="q-icon">📍</span>
+        <span>Où es-tu situé ?</span>
+        <span class="chevron">▼</span>
+      </div>
+      <div class="faq-a">Je suis basé à <strong>Cadenet (84)</strong>, Vaucluse. Une fois le formulaire rempli, je vous indique l'adresse pour déposer ou envoyer l'appareil.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggle(this)">
+        <span class="q-icon">📅</span>
+        <span>Quand est-ce que je dois payer ?</span>
+        <span class="chevron">▼</span>
+      </div>
+      <div class="faq-a">Le paiement se fait <strong>après acceptation du devis</strong>, en espèces ou par chèque. Aucun règlement en avance n'est exigé.</div>
+    </div>
+
+    <div class="faq-category"><p class="cat-label">// Services & Compatibilité</p></div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggle(this)">
+        <span class="q-icon">💻</span>
+        <span>Tu répares quoi exactement ?</span>
+        <span class="chevron">▼</span>
+      </div>
+      <div class="faq-a">Je m'occupe de :
+        <ul>
+          <li>Réinstallation/réinitialisation Windows ou Linux</li>
+          <li>Optimisation système (nettoyage, pilotes, logiciels)</li>
+          <li>Réglage BIOS, installation logiciels à la demande</li>
+          <li>Nettoyage interne, pâte thermique, SSD/HDD/RAM</li>
+          <li>Changement processeur (PC fixe), batterie portable</li>
+          <li>Réparation téléphones (écran, batterie, caméra…)</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggle(this)">
+        <span class="q-icon">🔌</span>
+        <span>Tu répares aussi les Mac ou uniquement les PC Windows ?</span>
+        <span class="chevron">▼</span>
+      </div>
+      <div class="faq-a">Je travaille principalement sur les <strong>PC Windows et Linux</strong>. Les Mac ne sont pas pris en charge.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggle(this)">
+        <span class="q-icon">🧽</span>
+        <span>Tu proposes aussi un nettoyage logiciel ?</span>
+        <span class="chevron">▼</span>
+      </div>
+      <div class="faq-a">Oui ! Je peux désinstaller les logiciels inutiles, optimiser les performances, supprimer les virus, et améliorer le démarrage de Windows.</div>
+    </div>
+
+    <div class="faq-category"><p class="cat-label">// Pièces & Envoi</p></div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggle(this)">
+        <span class="q-icon">📦</span>
+        <span>Est-ce que je dois fournir les pièces ?</span>
+        <span class="chevron">▼</span>
+      </div>
+      <div class="faq-a">Non, vous n'avez pas besoin de fournir les pièces. Je me charge de leur fourniture <strong>après validation du devis</strong>. Les pièces sont commandées auprès de vendeurs tiers (Amazon, Cdiscount…).</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggle(this)">
+        <span class="q-icon">✉️</span>
+        <span>Comment envoyer mon PC ?</span>
+        <span class="chevron">▼</span>
+      </div>
+      <div class="faq-a">Après avoir rempli le formulaire, je vous contacte rapidement pour vous expliquer comment me remettre la machine : <strong>en main propre</strong> (si vous êtes proche de Cadenet) ou par colis sécurisé.</div>
+    </div>
+
+    <div class="faq-category"><p class="cat-label">// Sécurité & Données</p></div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggle(this)">
+        <span class="q-icon">🔐</span>
+        <span>Mes données sont-elles en sécurité ?</span>
+        <span class="chevron">▼</span>
+      </div>
+      <div class="faq-a">Oui. Je respecte la confidentialité de vos données. <strong>Aucune information personnelle n'est consultée ou conservée</strong> sans votre accord explicite.</div>
+    </div>
+
+  </div>
+
+  <div class="cta-box">
+    <h2>Une question non listée ?</h2>
+    <p>Contactez-moi directement, je vous répondrai dans les plus brefs délais.</p>
+    <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap">
+      <a href="contact.html" class="btn btn-primary">Me contacter →</a>
+      <a href="services.html" class="btn btn-outline">Voir les services</a>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <h2>Angelo<span style="color:var(--accent)">.</span>Repairs</h2>
+        <p>Dépannage informatique à Cadenet (84), Vaucluse.</p>
+        <div class="social-links">
+          <a href="https://www.youtube.com/@Angelo-Repairs" class="social-link">▶</a>
+          <a href="https://www.instagram.com/angelo_repairs/" class="social-link">📷</a>
+          <a href="https://www.tiktok.com/@angelo_repairs_84" class="social-link">♪</a>
+        </div>
+      </div>
+      <div class="footer-links">
+        <div class="footer-col"><h4>Navigation</h4><ul><li><a href="index.html">Accueil</a></li><li><a href="services.html">Services</a></li><li><a href="tarifs.html">Tarifs</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+        <div class="footer-col"><h4>Infos</h4><ul><li><a href="avis.html">Avis</a></li><li><a href="mentions-legales.html">Mentions légales</a></li></ul></div>
+      </div>
+    </div>
+    <div class="footer-bottom"><p>© 2026 Angelo Repairs.</p><p><a href="mentions-legales.html">Mentions légales</a> · <a href="politique-confidentialite.html">Confidentialité</a></p></div>
+  </div>
+</footer>
+
+<script>
+function toggle(el){
+  const item=el.closest('.faq-item');
+  const isOpen=item.classList.contains('open');
+  document.querySelectorAll('.faq-item.open').forEach(i=>i.classList.remove('open'));
+  if(!isOpen)item.classList.add('open');
+}
+</script>
+</body>
+</html>

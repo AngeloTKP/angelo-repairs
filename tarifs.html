@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mes Tarifs — Angelo Repairs</title>
+  <meta name="description" content="Consultez les tarifs d'Angelo Repairs pour le dépannage informatique et la réparation téléphone à Cadenet (84). Devis personnalisé gratuit, paiement en espèces ou chèque.">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Syne:wght@400;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root{--bg:#0a0a0a;--bg2:#111111;--bg3:#1a1a1a;--border:#2a2a2a;--accent:#ff6600;--accent2:#ff8c00;--text:#e8e8e8;--text-muted:#888;--text-dim:#555;--white:#ffffff;--radius:4px;--font-head:'Syne',sans-serif;--font-mono:'Space Mono',monospace;--font-body:'Inter',sans-serif}
+    *{margin:0;padding:0;box-sizing:border-box}
+    body{background:var(--bg);color:var(--text);font-family:var(--font-body);font-size:16px;line-height:1.6}
+    nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(10,10,10,0.96);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:0 2rem;height:64px;display:flex;align-items:center;justify-content:space-between}
+    .nav-logo{font-family:var(--font-head);font-weight:800;font-size:1.1rem;color:var(--white);text-decoration:none}
+    .nav-logo span{color:var(--accent)}
+    .nav-links{display:flex;gap:0.2rem;list-style:none}
+    .nav-links a{color:var(--text-muted);text-decoration:none;font-size:0.82rem;font-weight:500;padding:0.4rem 0.75rem;border-radius:var(--radius);transition:all 0.2s}
+    .nav-links a:hover{color:var(--white);background:var(--bg3)}
+    .nav-links a.active{color:var(--accent)}
+    .nav-toggle{display:none;background:none;border:none;cursor:pointer;padding:0.5rem}
+    .nav-toggle span{display:block;width:22px;height:2px;background:var(--text);margin:4px 0}
+    .hero-grid{position:fixed;inset:0;background-image:linear-gradient(rgba(255,102,0,0.03) 1px,transparent 1px),linear-gradient(90deg,rgba(255,102,0,0.03) 1px,transparent 1px);background-size:64px 64px;pointer-events:none;z-index:0}
+
+    .page-header{padding:7rem 2rem 3rem;max-width:1100px;margin:0 auto;position:relative;z-index:1}
+    .section-label{font-family:var(--font-mono);font-size:0.72rem;color:var(--accent);letter-spacing:0.15em;text-transform:uppercase;margin-bottom:0.75rem}
+    .accent-line{width:40px;height:3px;background:var(--accent);margin-bottom:1.5rem;border-radius:2px}
+    h1{font-family:var(--font-head);font-size:clamp(2.5rem,5vw,4rem);font-weight:800;color:var(--white);letter-spacing:-0.03em;margin-bottom:1rem;line-height:1.05}
+    h1 em{font-style:normal;color:var(--accent)}
+    .page-sub{font-size:1rem;color:var(--text-muted);max-width:500px;font-weight:300;line-height:1.75;margin-bottom:0.5rem}
+
+    .wrap{max-width:1100px;margin:0 auto;padding:0 2rem 5rem;position:relative;z-index:1}
+
+    .payment-banner{background:rgba(255,102,0,0.06);border:1px solid rgba(255,102,0,0.25);border-radius:8px;padding:1rem 1.5rem;display:flex;align-items:center;gap:1rem;margin-bottom:3rem;font-size:0.88rem}
+    .payment-banner .icon{font-size:1.3rem;flex-shrink:0}
+    .payment-banner strong{color:var(--accent);display:block;margin-bottom:0.1rem}
+    .payment-banner span{color:var(--text-muted)}
+
+    .tarif-section{margin-bottom:3rem}
+    .tarif-section-head{display:flex;align-items:center;gap:1rem;margin-bottom:1.25rem}
+    .tarif-section-head h2{font-family:var(--font-head);font-size:1.2rem;font-weight:800;color:var(--white)}
+    .tarif-section-head .cat-icon{font-size:1.4rem}
+    .cat-tag{background:rgba(255,102,0,0.1);border:1px solid rgba(255,102,0,0.25);color:var(--accent);font-size:0.7rem;font-family:var(--font-mono);padding:0.2rem 0.6rem;border-radius:3px;letter-spacing:0.05em}
+
+    table{width:100%;border-collapse:collapse}
+    thead th{background:var(--bg3);color:var(--text-muted);font-size:0.75rem;font-weight:600;text-transform:uppercase;letter-spacing:0.1em;font-family:var(--font-mono);padding:0.75rem 1rem;text-align:left;border-bottom:1px solid var(--border)}
+    thead th:last-child{text-align:right}
+    tbody tr{border-bottom:1px solid rgba(255,255,255,0.04);transition:background 0.15s}
+    tbody tr:hover{background:rgba(255,102,0,0.03)}
+    tbody td{padding:0.9rem 1rem;font-size:0.88rem;color:var(--text)}
+    tbody td:first-child{display:flex;align-items:center;gap:0.6rem}
+    tbody td:last-child{text-align:right;font-family:var(--font-mono);font-size:0.85rem}
+    .price-val{color:var(--accent);font-weight:700}
+    .price-note{color:var(--text-dim);font-size:0.72rem;font-family:var(--font-body);margin-top:0.1rem}
+    .td-icon{font-size:1rem}
+
+    .devis-note{background:var(--bg2);border:1px solid var(--border);border-radius:8px;padding:1.25rem 1.5rem;margin-top:1rem;font-size:0.85rem;color:var(--text-muted);display:flex;gap:0.75rem}
+    .devis-note span{color:var(--accent);font-size:1rem;flex-shrink:0;margin-top:0.1rem}
+
+    .cta-row{display:flex;gap:1rem;justify-content:center;margin-top:3rem;flex-wrap:wrap}
+    .btn{display:inline-flex;align-items:center;gap:0.5rem;padding:0.85rem 1.8rem;border-radius:var(--radius);font-weight:600;font-size:0.9rem;text-decoration:none;cursor:pointer;border:none;transition:all 0.22s;font-family:var(--font-body)}
+    .btn-primary{background:var(--accent);color:#fff}
+    .btn-primary:hover{background:var(--accent2);transform:translateY(-1px);box-shadow:0 8px 28px rgba(255,102,0,0.35)}
+    .btn-outline{background:transparent;color:var(--text);border:1px solid var(--border)}
+    .btn-outline:hover{border-color:var(--accent);color:var(--accent);background:rgba(255,102,0,0.05)}
+
+    footer{background:var(--bg2);border-top:1px solid var(--border);padding:3rem 2rem 2rem;position:relative;z-index:1}
+    .footer-inner{max-width:1100px;margin:0 auto}
+    .footer-top{display:flex;justify-content:space-between;align-items:flex-start;gap:2rem;flex-wrap:wrap;margin-bottom:2rem}
+    .footer-brand h2{font-family:var(--font-head);font-size:1.1rem;font-weight:800;color:var(--white);margin-bottom:0.4rem}
+    .footer-brand p{font-size:0.82rem;color:var(--text-muted);max-width:240px}
+    .footer-links{display:flex;gap:2.5rem;flex-wrap:wrap}
+    .footer-col h4{font-size:0.7rem;color:var(--white);text-transform:uppercase;letter-spacing:0.12em;margin-bottom:1rem;font-family:var(--font-mono)}
+    .footer-col ul{list-style:none}
+    .footer-col ul li{margin-bottom:0.4rem}
+    .footer-col ul li a{font-size:0.82rem;color:var(--text-muted);text-decoration:none;transition:color 0.2s}
+    .footer-col ul li a:hover{color:var(--accent)}
+    .social-links{display:flex;gap:0.6rem;margin-top:1rem}
+    .social-link{width:32px;height:32px;display:flex;align-items:center;justify-content:center;background:var(--bg3);border:1px solid var(--border);border-radius:var(--radius);color:var(--text-muted);text-decoration:none;font-size:0.75rem;transition:all 0.2s}
+    .social-link:hover{border-color:var(--accent);color:var(--accent)}
+    .footer-bottom{padding-top:1.5rem;border-top:1px solid var(--border);display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem}
+    .footer-bottom p{font-size:0.78rem;color:var(--text-dim)}
+    .footer-bottom a{color:var(--text-dim);text-decoration:none;transition:color 0.2s}
+    .footer-bottom a:hover{color:var(--accent)}
+
+    @media(max-width:600px){
+      .nav-links{display:none}
+      .nav-links.open{display:flex;flex-direction:column;position:fixed;top:64px;left:0;right:0;background:var(--bg2);border-bottom:1px solid var(--border);padding:1.5rem;gap:0.5rem}
+      .nav-toggle{display:block}
+      table{font-size:0.8rem}
+      tbody td:first-child{gap:0.3rem}
+    }
+  </style>
+</head>
+<body>
+
+<div class="hero-grid"></div>
+
+<nav>
+  <a href="index.html" class="nav-logo">Angelo<span>.</span>Repairs</a>
+  <button class="nav-toggle" onclick="document.querySelector('.nav-links').classList.toggle('open')">
+    <span></span><span></span><span></span>
+  </button>
+  <ul class="nav-links">
+    <li><a href="index.html">Accueil</a></li>
+    <li><a href="services.html">Services</a></li>
+    <li><a href="tarifs.html" class="active">Tarifs</a></li>
+    <li><a href="contact.html">Contact</a></li>
+    <li><a href="comment-ca-marche.html">Comment ça marche</a></li>
+    <li><a href="avis.html">Avis</a></li>
+    <li><a href="faq.html">FAQ</a></li>
+  </ul>
+</nav>
+
+<div class="page-header">
+  <p class="section-label">// Tarification</p>
+  <div class="accent-line"></div>
+  <h1>Mes <em>tarifs</em></h1>
+  <p class="page-sub">Des prix clairs et transparents. Chaque intervention fait l'objet d'un devis personnalisé avant tout travail.</p>
+</div>
+
+<div class="wrap">
+
+  <div class="payment-banner">
+    <span class="icon">💳</span>
+    <div>
+      <strong>Règlement en espèces ou par chèque uniquement</strong>
+      <span>Paiement après validation du devis — Règlement en avance exigé.</span>
+    </div>
+  </div>
+
+  <!-- LOGICIEL -->
+  <div class="tarif-section">
+    <div class="tarif-section-head">
+      <span class="cat-icon">💻</span>
+      <h2>Services logiciels PC</h2>
+      <span class="cat-tag">LOGICIEL</span>
+    </div>
+    <table>
+      <thead>
+        <tr><th>Prestation</th><th>Détails</th><th>Prix indicatif</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="td-icon">🔄</span>Réinstallation Windows</td>
+          <td style="color:var(--text-muted);font-size:0.82rem">Installation propre + pilotes essentiels</td>
+          <td><span class="price-val">Sur devis</span></td>
+        </tr>
+        <tr>
+          <td><span class="td-icon">🔄</span>Réinstallation Linux</td>
+          <td style="color:var(--text-muted);font-size:0.82rem">Installation + configuration de base</td>
+          <td><span class="price-val">Sur devis</span></td>
+        </tr>
+        <tr>
+          <td><span class="td-icon">🚀</span>Optimisation système</td>
+          <td style="color:var(--text-muted);font-size:0.82rem">Nettoyage, pilotes, démarrage, logiciels</td>
+          <td><span class="price-val">Sur devis</span></td>
+        </tr>
+        <tr>
+          <td><span class="td-icon">🛡️</span>Suppression virus / malwares</td>
+          <td style="color:var(--text-muted);font-size:0.82rem">Scan complet + désinfection</td>
+          <td><span class="price-val">Sur devis</span></td>
+        </tr>
+        <tr>
+          <td><span class="td-icon">📦</span>Installation logiciel(s)</td>
+          <td style="color:var(--text-muted);font-size:0.82rem">Bureautique, jeux, utilitaires</td>
+          <td><span class="price-val">Sur devis</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- MATÉRIEL -->
+  <div class="tarif-section">
+    <div class="tarif-section-head">
+      <span class="cat-icon">🛠️</span>
+      <h2>Services matériels PC</h2>
+      <span class="cat-tag">HARDWARE</span>
+    </div>
+    <table>
+      <thead>
+        <tr><th>Prestation</th><th>Détails</th><th>Prix indicatif</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="td-icon">🖥️</span>Nettoyage interne</td>
+          <td style="color:var(--text-muted);font-size:0.82rem">Dépoussiérage complet</td>
+          <td><span class="price-val">Sur devis</span></td>
+        </tr>
+        <tr>
+          <td><span class="td-icon">🧊</span>Pâte thermique</td>
+          <td style="color:var(--text-muted);font-size:0.82rem">Fixe + certains portables</td>
+          <td><span class="price-val">Sur devis</span></td>
+        </tr>
+        <tr>
+          <td><span class="td-icon">💾</span>SSD / HDD / RAM</td>
+          <td style="color:var(--text-muted);font-size:0.82rem">Remplacement ou ajout — pièce non incluse</td>
+          <td><span class="price-val">Main d'œuvre sur devis</span></td>
+        </tr>
+        <tr>
+          <td><span class="td-icon">⚙️</span>Changement processeur</td>
+          <td style="color:var(--text-muted);font-size:0.82rem">PC fixe uniquement</td>
+          <td><span class="price-val">Sur devis</span></td>
+        </tr>
+        <tr>
+          <td><span class="td-icon">🔋</span>Batterie PC portable</td>
+          <td style="color:var(--text-muted);font-size:0.82rem">Selon modèle compatible — pièce non incluse</td>
+          <td><span class="price-val">Main d'œuvre sur devis</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- TÉLÉPHONES -->
+  <div class="tarif-section">
+    <div class="tarif-section-head">
+      <span class="cat-icon">📱</span>
+      <h2>Réparations téléphones</h2>
+      <span class="cat-tag">MOBILE</span>
+    </div>
+    <table>
+      <thead>
+        <tr><th>Prestation</th><th>Détails</th><th>Prix indicatif</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="td-icon">📱</span>Remplacement écran</td>
+          <td style="color:var(--text-muted);font-size:0.82rem">LCD ou OLED — pièce non incluse</td>
+          <td><span class="price-val">Main d'œuvre sur devis</span></td>
+        </tr>
+        <tr>
+          <td><span class="td-icon">🔋</span>Batterie téléphone</td>
+          <td style="color:var(--text-muted);font-size:0.82rem">Pièce non incluse</td>
+          <td><span class="price-val">Main d'œuvre sur devis</span></td>
+        </tr>
+        <tr>
+          <td><span class="td-icon">📸</span>Caméra avant / arrière</td>
+          <td style="color:var(--text-muted);font-size:0.82rem">Pièce non incluse</td>
+          <td><span class="price-val">Main d'œuvre sur devis</span></td>
+        </tr>
+        <tr>
+          <td><span class="td-icon">💧</span>Diagnostic oxydation</td>
+          <td style="color:var(--text-muted);font-size:0.82rem">Diagnostic complet suite à dégât liquide</td>
+          <td><span class="price-val">Sur devis</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="devis-note">
+    <span>ℹ️</span>
+    <div>
+      <strong style="color:var(--text);font-size:0.88rem">À propos des tarifs</strong><br>
+      Les pièces détachées (écrans, batteries, RAM, SSD…) sont commandées auprès de vendeurs tiers (Amazon, Cdiscount…) et leur coût s'ajoute à la main d'œuvre. Un devis détaillé vous est toujours communiqué avant intervention. <strong>Aucun travail ne commence sans votre accord.</strong>
+    </div>
+  </div>
+
+  <div class="cta-row">
+    <a href="contact.html" class="btn btn-primary">Demander un devis gratuit →</a>
+    <a href="services.html" class="btn btn-outline">Voir les services</a>
+  </div>
+
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <h2>Angelo<span style="color:var(--accent)">.</span>Repairs</h2>
+        <p>Dépannage informatique à Cadenet (84), Vaucluse.</p>
+        <div class="social-links">
+          <a href="https://www.youtube.com/@Angelo-Repairs" class="social-link">▶</a>
+          <a href="https://www.instagram.com/angelo_repairs/" class="social-link">📷</a>
+          <a href="https://www.tiktok.com/@angelo_repairs_84" class="social-link">♪</a>
+        </div>
+      </div>
+      <div class="footer-links">
+        <div class="footer-col">
+          <h4>Navigation</h4>
+          <ul>
+            <li><a href="index.html">Accueil</a></li>
+            <li><a href="services.html">Mes services</a></li>
+            <li><a href="tarifs.html">Mes tarifs</a></li>
+            <li><a href="contact.html">Me contacter</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Infos</h4>
+          <ul>
+            <li><a href="comment-ca-marche.html">Comment ça marche</a></li>
+            <li><a href="faq.html">FAQ</a></li>
+            <li><a href="mentions-legales.html">Mentions légales</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 Angelo Repairs. Tous droits réservés.</p>
+      <p><a href="mentions-legales.html">Mentions légales</a> · <a href="politique-confidentialite.html">Confidentialité</a></p>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

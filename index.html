@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Angelo Repairs — Dépannage Informatique Cadenet (84)</title>
+  <meta name="description" content="Angelo Repairs, spécialiste en dépannage informatique et réparation téléphones à Cadenet (84). Réinstallation Windows, optimisation PC, remplacement écran, batterie. Devis gratuit.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Syne:wght@400;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0a0a0a; --bg2: #111111; --bg3: #1a1a1a;
+      --border: #2a2a2a; --accent: #ff6600; --accent2: #ff8c00;
+      --text: #e8e8e8; --text-muted: #888; --text-dim: #555; --white: #ffffff;
+      --radius: 4px;
+      --font-head: 'Syne', sans-serif;
+      --font-mono: 'Space Mono', monospace;
+      --font-body: 'Inter', sans-serif;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { background: var(--bg); color: var(--text); font-family: var(--font-body); font-size: 16px; line-height: 1.6; }
+
+    /* NAV */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: rgba(10,10,10,0.96); backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border); padding: 0 2rem;
+      height: 64px; display: flex; align-items: center; justify-content: space-between;
+    }
+    .nav-logo { font-family: var(--font-head); font-weight: 800; font-size: 1.1rem; color: var(--white); text-decoration: none; }
+    .nav-logo span { color: var(--accent); }
+    .nav-links { display: flex; gap: 0.2rem; list-style: none; }
+    .nav-links a { color: var(--text-muted); text-decoration: none; font-size: 0.82rem; font-weight: 500; padding: 0.4rem 0.75rem; border-radius: var(--radius); transition: all 0.2s; }
+    .nav-links a:hover { color: var(--white); background: var(--bg3); }
+    .nav-links a.active { color: var(--accent); }
+    .nav-toggle { display: none; background: none; border: none; cursor: pointer; padding: 0.5rem; }
+    .nav-toggle span { display: block; width: 22px; height: 2px; background: var(--text); margin: 4px 0; transition: all 0.3s; }
+
+    /* HERO */
+    .hero {
+      min-height: 92vh; display: flex; align-items: center;
+      position: relative; overflow: hidden; padding: 6rem 2rem 4rem;
+    }
+    .hero-grid {
+      position: absolute; inset: 0;
+      background-image: linear-gradient(rgba(255,102,0,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(255,102,0,0.04) 1px, transparent 1px);
+      background-size: 64px 64px;
+    }
+    .hero-glow {
+      position: absolute; width: 700px; height: 700px;
+      background: radial-gradient(circle, rgba(255,102,0,0.09) 0%, transparent 65%);
+      top: -150px; right: -250px; pointer-events: none;
+    }
+    .hero-glow2 {
+      position: absolute; width: 400px; height: 400px;
+      background: radial-gradient(circle, rgba(255,102,0,0.04) 0%, transparent 70%);
+      bottom: -50px; left: -100px; pointer-events: none;
+    }
+    .hero-content { max-width: 1100px; margin: 0 auto; position: relative; z-index: 1; width: 100%; }
+    .hero-inner { display: grid; grid-template-columns: 1fr 420px; gap: 4rem; align-items: center; }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      background: rgba(255,102,0,0.1); border: 1px solid rgba(255,102,0,0.3);
+      border-radius: 100px; padding: 0.35rem 1rem;
+      font-size: 0.75rem; color: var(--accent); font-family: var(--font-mono);
+      margin-bottom: 2rem; letter-spacing: 0.05em;
+    }
+    .badge-dot { width: 6px; height: 6px; background: var(--accent); border-radius: 50%; animation: pulse 2s infinite; }
+    @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.3} }
+    h1 {
+      font-family: var(--font-head); font-size: clamp(2.8rem, 6vw, 5rem);
+      font-weight: 800; line-height: 1.05; color: var(--white); letter-spacing: -0.03em; margin-bottom: 1.5rem;
+    }
+    h1 em { font-style: normal; color: var(--accent); }
+    .hero-sub { font-size: 1.05rem; color: var(--text-muted); max-width: 500px; margin-bottom: 2.5rem; font-weight: 300; line-height: 1.75; }
+    .hero-cta { display: flex; gap: 1rem; flex-wrap: wrap; align-items: center; margin-bottom: 3rem; }
+    .hero-stats { display: flex; gap: 2.5rem; }
+    .stat-num { font-family: var(--font-head); font-size: 2rem; font-weight: 800; color: var(--white); line-height: 1; }
+    .stat-num span { color: var(--accent); }
+    .stat-label { font-size: 0.78rem; color: var(--text-muted); margin-top: 0.2rem; }
+
+    /* CARD BOX (right side) */
+    .hero-card {
+      background: var(--bg2); border: 1px solid var(--border);
+      border-radius: 12px; padding: 2rem; position: relative; overflow: hidden;
+    }
+    .hero-card::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+    }
+    .hero-card h3 { font-family: var(--font-head); font-size: 1.05rem; font-weight: 700; color: var(--white); margin-bottom: 1.25rem; }
+    .location-info { display: flex; align-items: flex-start; gap: 0.75rem; margin-bottom: 1rem; }
+    .loc-icon { font-size: 1.2rem; margin-top: 0.1rem; }
+    .loc-text strong { display: block; font-size: 0.9rem; color: var(--white); font-weight: 600; }
+    .loc-text span { font-size: 0.82rem; color: var(--text-muted); }
+    .quick-services { margin-top: 1.5rem; }
+    .quick-services p { font-size: 0.78rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.1em; font-family: var(--font-mono); margin-bottom: 0.75rem; }
+    .service-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+    .stag {
+      background: var(--bg3); border: 1px solid var(--border); color: var(--text-muted);
+      font-size: 0.75rem; padding: 0.3rem 0.65rem; border-radius: 3px;
+      font-family: var(--font-mono); transition: all 0.2s;
+    }
+    .stag:hover { border-color: rgba(255,102,0,0.4); color: var(--accent); }
+    .contact-row { margin-top: 1.5rem; display: flex; gap: 0.75rem; }
+
+    /* BUTTONS */
+    .btn {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      padding: 0.85rem 1.8rem; border-radius: var(--radius);
+      font-weight: 600; font-size: 0.9rem; text-decoration: none;
+      cursor: pointer; border: none; transition: all 0.22s; letter-spacing: 0.02em;
+      font-family: var(--font-body);
+    }
+    .btn-primary { background: var(--accent); color: #fff; }
+    .btn-primary:hover { background: var(--accent2); transform: translateY(-1px); box-shadow: 0 8px 28px rgba(255,102,0,0.35); }
+    .btn-outline { background: transparent; color: var(--text); border: 1px solid var(--border); }
+    .btn-outline:hover { border-color: var(--accent); color: var(--accent); background: rgba(255,102,0,0.05); }
+    .btn-sm { padding: 0.55rem 1rem; font-size: 0.82rem; }
+
+    /* SECTIONS */
+    .section { max-width: 1100px; margin: 0 auto; padding: 5rem 2rem; }
+    .section-label { font-family: var(--font-mono); font-size: 0.72rem; color: var(--accent); letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 0.75rem; }
+    .section-title { font-family: var(--font-head); font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 800; color: var(--white); letter-spacing: -0.02em; margin-bottom: 1rem; line-height: 1.1; }
+    .section-desc { color: var(--text-muted); max-width: 500px; font-size: 0.98rem; line-height: 1.75; margin-bottom: 3rem; }
+    .accent-line { width: 40px; height: 3px; background: var(--accent); margin-bottom: 1.5rem; border-radius: 2px; }
+
+    /* SERVICES PREVIEW */
+    .services-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.5rem; }
+    .svc-card {
+      background: var(--bg2); border: 1px solid var(--border); border-radius: 8px;
+      padding: 1.75rem; transition: all 0.25s; position: relative; overflow: hidden;
+    }
+    .svc-card:hover { border-color: rgba(255,102,0,0.35); transform: translateY(-3px); box-shadow: 0 12px 40px rgba(0,0,0,0.4); }
+    .svc-card::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, var(--accent), transparent); opacity: 0; transition: opacity 0.25s; }
+    .svc-card:hover::after { opacity: 1; }
+    .svc-icon { font-size: 1.8rem; margin-bottom: 1rem; display: block; }
+    .svc-card h3 { font-family: var(--font-head); font-size: 1rem; font-weight: 700; color: var(--white); margin-bottom: 0.5rem; }
+    .svc-card p { font-size: 0.85rem; color: var(--text-muted); line-height: 1.6; }
+
+    /* HOW IT WORKS */
+    .steps-row { display: grid; grid-template-columns: repeat(5,1fr); gap: 1rem; position: relative; }
+    .steps-row::before {
+      content: ''; position: absolute; top: 28px; left: 10%; right: 10%;
+      height: 1px; background: linear-gradient(90deg, transparent, var(--border), var(--border), var(--border), transparent);
+      z-index: 0;
+    }
+    .step { text-align: center; position: relative; z-index: 1; padding: 0 0.5rem; }
+    .step-num {
+      width: 56px; height: 56px; display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 1rem; background: var(--bg2); border: 1px solid var(--border);
+      border-radius: 50%; font-family: var(--font-mono); font-size: 0.85rem;
+      color: var(--accent); font-weight: 700; position: relative;
+    }
+    .step-num::after { content: ''; position: absolute; inset: 3px; background: rgba(255,102,0,0.05); border-radius: 50%; }
+    .step h4 { font-family: var(--font-head); font-size: 0.88rem; font-weight: 700; color: var(--white); margin-bottom: 0.4rem; }
+    .step p { font-size: 0.78rem; color: var(--text-muted); line-height: 1.5; }
+
+    /* DIVIDER */
+    .divider { border: none; border-top: 1px solid var(--border); }
+    .section-divider { border: none; border-top: 1px solid var(--border); }
+
+    /* PAYMENT / INFO */
+    .info-banner {
+      background: var(--bg2); border: 1px solid var(--border); border-radius: 8px;
+      padding: 1.5rem 2rem; display: flex; align-items: center; gap: 1.5rem;
+      margin-top: 3rem; flex-wrap: wrap;
+    }
+    .info-banner .ib-icon { font-size: 2rem; }
+    .info-banner h4 { font-family: var(--font-head); font-size: 0.95rem; font-weight: 700; color: var(--white); margin-bottom: 0.25rem; }
+    .info-banner p { font-size: 0.85rem; color: var(--text-muted); }
+
+    /* FOOTER */
+    footer { background: var(--bg2); border-top: 1px solid var(--border); padding: 3rem 2rem 2rem; }
+    .footer-inner { max-width: 1100px; margin: 0 auto; }
+    .footer-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 2rem; flex-wrap: wrap; margin-bottom: 2rem; }
+    .footer-brand h2 { font-family: var(--font-head); font-size: 1.2rem; font-weight: 800; color: var(--white); margin-bottom: 0.5rem; }
+    .footer-brand p { font-size: 0.85rem; color: var(--text-muted); max-width: 260px; }
+    .footer-links { display: flex; gap: 3rem; flex-wrap: wrap; }
+    .footer-col h4 { font-size: 0.72rem; font-weight: 600; color: var(--white); text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 1rem; font-family: var(--font-mono); }
+    .footer-col ul { list-style: none; }
+    .footer-col ul li { margin-bottom: 0.5rem; }
+    .footer-col ul li a { font-size: 0.85rem; color: var(--text-muted); text-decoration: none; transition: color 0.2s; }
+    .footer-col ul li a:hover { color: var(--accent); }
+    .social-links { display: flex; gap: 0.6rem; margin-top: 1rem; }
+    .social-link { width: 34px; height: 34px; display: flex; align-items: center; justify-content: center; background: var(--bg3); border: 1px solid var(--border); border-radius: var(--radius); color: var(--text-muted); text-decoration: none; font-size: 0.8rem; transition: all 0.2s; }
+    .social-link:hover { border-color: var(--accent); color: var(--accent); }
+    .footer-bottom { padding-top: 1.5rem; border-top: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
+    .footer-bottom p { font-size: 0.8rem; color: var(--text-dim); }
+    .footer-bottom a { color: var(--text-dim); text-decoration: none; transition: color 0.2s; }
+    .footer-bottom a:hover { color: var(--accent); }
+
+    @media(max-width:900px){
+      .hero-inner { grid-template-columns: 1fr; }
+      .hero-card { display: none; }
+      .services-grid { grid-template-columns: 1fr 1fr; }
+      .steps-row { grid-template-columns: 1fr 1fr; }
+      .steps-row::before { display: none; }
+    }
+    @media(max-width:600px){
+      .nav-links { display: none; }
+      .nav-links.open { display: flex; flex-direction: column; position: fixed; top: 64px; left: 0; right: 0; background: var(--bg2); border-bottom: 1px solid var(--border); padding: 1.5rem; gap: 0.5rem; }
+      .nav-toggle { display: block; }
+      .services-grid { grid-template-columns: 1fr; }
+      .steps-row { grid-template-columns: 1fr; }
+      .hero-stats { flex-wrap: wrap; gap: 1.5rem; }
+    }
+
+    /* ANIMATION */
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+    .hero-left > * { animation: fadeUp 0.6s ease both; }
+    .hero-badge { animation-delay: 0.05s; }
+    h1 { animation-delay: 0.15s; }
+    .hero-sub { animation-delay: 0.25s; }
+    .hero-cta { animation-delay: 0.35s; }
+    .hero-stats { animation-delay: 0.45s; }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">Angelo<span>.</span>Repairs</a>
+  <button class="nav-toggle" onclick="document.querySelector('.nav-links').classList.toggle('open')" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+  <ul class="nav-links">
+    <li><a href="index.html" class="active">Accueil</a></li>
+    <li><a href="services.html">Services</a></li>
+    <li><a href="tarifs.html">Tarifs</a></li>
+    <li><a href="contact.html">Contact</a></li>
+    <li><a href="comment-ca-marche.html">Comment ça marche</a></li>
+    <li><a href="avis.html">Avis</a></li>
+    <li><a href="faq.html">FAQ</a></li>
+  </ul>
+</nav>
+
+<main>
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-grid"></div>
+    <div class="hero-glow"></div>
+    <div class="hero-glow2"></div>
+    <div class="hero-content">
+      <div class="hero-inner">
+        <div class="hero-left">
+          <div class="hero-badge"><span class="badge-dot"></span>Disponible à Cadenet (84)</div>
+          <h1>Spécialiste en<br><em>réparation</em><br>informatique</h1>
+          <p class="hero-sub">PC, ordinateurs portables, téléphones — je diagnostique, répare et optimise vos appareils avec soin, rapidité et transparence.</p>
+          <div class="hero-cta">
+            <a href="contact.html" class="btn btn-primary">Faire un devis →</a>
+            <a href="services.html" class="btn btn-outline">Voir les services</a>
+          </div>
+          <div class="hero-stats">
+            <div>
+              <div class="stat-num">3<span>–</span>14</div>
+              <div class="stat-label">Jours de délai</div>
+            </div>
+            <div>
+              <div class="stat-num">4<span>+</span></div>
+              <div class="stat-label">Types de services</div>
+            </div>
+            <div>
+              <div class="stat-num">84</div>
+              <div class="stat-label">Zone Vaucluse</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-card">
+          <h3>📍 Infos pratiques</h3>
+          <div class="location-info">
+            <span class="loc-icon">🏠</span>
+            <div class="loc-text">
+              <strong>Cadenet, Vaucluse (84)</strong>
+              <span>Dépôt sur place ou déplacement possible</span>
+            </div>
+          </div>
+          <div class="location-info">
+            <span class="loc-icon">💳</span>
+            <div class="loc-text">
+              <strong>Espèces ou chèque</strong>
+              <span>Paiement après validation du devis</span>
+            </div>
+          </div>
+          <div class="location-info">
+            <span class="loc-icon">📦</span>
+            <div class="loc-text">
+              <strong>Pièces commandées à la demande</strong>
+              <span>Amazon, Cdiscount — délais 3 à 14 jours</span>
+            </div>
+          </div>
+          <div class="quick-services">
+            <p>Services disponibles</p>
+            <div class="service-tags">
+              <span class="stag">Windows</span>
+              <span class="stag">Linux</span>
+              <span class="stag">SSD/RAM</span>
+              <span class="stag">Écran</span>
+              <span class="stag">Batterie</span>
+              <span class="stag">Virus</span>
+              <span class="stag">BIOS</span>
+              <span class="stag">Téléphone</span>
+            </div>
+          </div>
+          <div class="contact-row">
+            <a href="contact.html" class="btn btn-primary btn-sm">📞 Contacter</a>
+            <a href="services.html" class="btn btn-outline btn-sm">Services →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- SERVICES PREVIEW -->
+  <div class="section">
+    <p class="section-label">// Ce que je propose</p>
+    <div class="accent-line"></div>
+    <h2 class="section-title">Mes services</h2>
+    <p class="section-desc">Du dépannage logiciel à la réparation matérielle, je m'occupe de vos PC Windows, Linux et de vos téléphones.</p>
+
+    <div class="services-grid">
+      <div class="svc-card">
+        <span class="svc-icon">💻</span>
+        <h3>Services logiciels PC</h3>
+        <p>Réinstallation Windows / Linux, optimisation système, suppression virus, configuration BIOS, installation logiciels.</p>
+      </div>
+      <div class="svc-card">
+        <span class="svc-icon">🛠️</span>
+        <h3>Services matériels PC</h3>
+        <p>Nettoyage interne, remplacement SSD / HDD / RAM, pâte thermique, carte réseau, processeur (fixe), batterie portable.</p>
+      </div>
+      <div class="svc-card">
+        <span class="svc-icon">📱</span>
+        <h3>Réparation téléphones</h3>
+        <p>Remplacement écran (LCD/OLED), batterie, caméra, diagnostic oxydation, mise à jour et transfert de données.</p>
+      </div>
+    </div>
+
+    <div style="text-align:center; margin-top: 2.5rem;">
+      <a href="services.html" class="btn btn-outline">Voir tous les services →</a>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- COMMENT ÇA MARCHE -->
+  <div class="section">
+    <p class="section-label">// Processus</p>
+    <div class="accent-line"></div>
+    <h2 class="section-title">Comment ça marche ?</h2>
+    <p class="section-desc">Un processus simple en 5 étapes, de votre demande à la restitution de votre appareil réparé.</p>
+
+    <div class="steps-row">
+      <div class="step">
+        <div class="step-num">01</div>
+        <h4>Demande</h4>
+        <p>Remplissez le formulaire en ligne avec votre problème.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">02</div>
+        <h4>Devis</h4>
+        <p>Vous recevez un devis clair après étude de votre demande.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">03</div>
+        <h4>Dépôt</h4>
+        <p>Déposez ou envoyez votre appareil selon vos préférences.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">04</div>
+        <h4>Réparation</h4>
+        <p>Diagnostic et réparation soigneuse, tests de bon fonctionnement.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">05</div>
+        <h4>Restitution</h4>
+        <p>Récupérez votre appareil en main propre ou par colis.</p>
+      </div>
+    </div>
+
+    <div class="info-banner">
+      <span class="ib-icon">📦</span>
+      <div>
+        <h4>Disponibilité des pièces</h4>
+        <p>Les pièces sont commandées auprès de vendeurs tiers (Amazon, Cdiscount…). Délais de livraison : 3 à 14 jours ouvrés. Vous serez informé dès réception.</p>
+      </div>
+      <a href="comment-ca-marche.html" class="btn btn-outline btn-sm" style="margin-left:auto;">En savoir plus →</a>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- CTA -->
+  <div class="section" style="text-align:center; padding: 4rem 2rem;">
+    <p class="section-label" style="justify-content:center; display:block;">// Prêt ?</p>
+    <h2 class="section-title" style="margin: 0 auto 1rem;">Besoin d'une réparation ?</h2>
+    <p class="section-desc" style="margin: 0 auto 2.5rem;">Contactez-moi par WhatsApp, e-mail ou formulaire. Je vous réponds rapidement.</p>
+    <div style="display:flex; gap:1rem; justify-content:center; flex-wrap:wrap;">
+      <a href="contact.html" class="btn btn-primary">Faire un devis</a>
+      <a href="faq.html" class="btn btn-outline">Consulter la FAQ</a>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <h2>Angelo<span style="color:var(--accent)">.</span>Repairs</h2>
+        <p>Dépannage informatique & réparation téléphones à Cadenet (84), Vaucluse.</p>
+        <div class="social-links">
+          <a href="https://www.youtube.com/@Angelo-Repairs" class="social-link" title="YouTube">▶</a>
+          <a href="https://www.instagram.com/angelo_repairs/" class="social-link" title="Instagram">📷</a>
+          <a href="https://www.tiktok.com/@angelo_repairs_84" class="social-link" title="TikTok">♪</a>
+        </div>
+      </div>
+      <div class="footer-links">
+        <div class="footer-col">
+          <h4>Navigation</h4>
+          <ul>
+            <li><a href="index.html">Accueil</a></li>
+            <li><a href="services.html">Mes services</a></li>
+            <li><a href="tarifs.html">Mes tarifs</a></li>
+            <li><a href="contact.html">Me contacter</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Infos</h4>
+          <ul>
+            <li><a href="comment-ca-marche.html">Comment ça marche</a></li>
+            <li><a href="avis.html">Avis clients</a></li>
+            <li><a href="faq.html">FAQ</a></li>
+            <li><a href="mentions-legales.html">Mentions légales</a></li>
+            <li><a href="politique-confidentialite.html">Confidentialité</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Contact</h4>
+          <ul>
+            <li><a href="tel:0765688428">07 65 68 84 28</a></li>
+            <li><a href="/cdn-cgi/l/email-protection#6e0f00090b020140000700015c5c5b2e09030f0702400d0103"><span class="__cf_email__" data-cfemail="6d0c030a08010243030403025f5f582d0a000c0401430e0200">[email&#160;protected]</span></a></li>
+            <li><span style="color:var(--text-muted)">Cadenet (84), Vaucluse</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 Angelo Repairs. Tous droits réservés.</p>
+      <p><a href="mentions-legales.html">Mentio

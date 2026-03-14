@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Avis Clients — Angelo Repairs</title>
+  <meta name="description" content="Lisez les avis clients d'Angelo Repairs, spécialiste en dépannage informatique à Cadenet (84). Des clients satisfaits, des réparations soignées. Laissez votre avis !">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Syne:wght@400;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root{--bg:#0a0a0a;--bg2:#111111;--bg3:#1a1a1a;--border:#2a2a2a;--accent:#ff6600;--accent2:#ff8c00;--text:#e8e8e8;--text-muted:#888;--text-dim:#555;--white:#ffffff;--radius:4px;--font-head:'Syne',sans-serif;--font-mono:'Space Mono',monospace;--font-body:'Inter',sans-serif}
+    *{margin:0;padding:0;box-sizing:border-box}
+    body{background:var(--bg);color:var(--text);font-family:var(--font-body);font-size:16px;line-height:1.6}
+    nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(10,10,10,0.96);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:0 2rem;height:64px;display:flex;align-items:center;justify-content:space-between}
+    .nav-logo{font-family:var(--font-head);font-weight:800;font-size:1.1rem;color:var(--white);text-decoration:none}
+    .nav-logo span{color:var(--accent)}
+    .nav-links{display:flex;gap:0.2rem;list-style:none}
+    .nav-links a{color:var(--text-muted);text-decoration:none;font-size:0.82rem;font-weight:500;padding:0.4rem 0.75rem;border-radius:var(--radius);transition:all 0.2s}
+    .nav-links a:hover{color:var(--white);background:var(--bg3)}
+    .nav-links a.active{color:var(--accent)}
+    .nav-toggle{display:none;background:none;border:none;cursor:pointer;padding:0.5rem}
+    .nav-toggle span{display:block;width:22px;height:2px;background:var(--text);margin:4px 0}
+    .hero-grid{position:fixed;inset:0;background-image:linear-gradient(rgba(255,102,0,0.03) 1px,transparent 1px),linear-gradient(90deg,rgba(255,102,0,0.03) 1px,transparent 1px);background-size:64px 64px;pointer-events:none;z-index:0}
+    .page-header{padding:7rem 2rem 3rem;max-width:1100px;margin:0 auto;position:relative;z-index:1}
+    .section-label{font-family:var(--font-mono);font-size:0.72rem;color:var(--accent);letter-spacing:0.15em;text-transform:uppercase;margin-bottom:0.75rem}
+    .accent-line{width:40px;height:3px;background:var(--accent);margin-bottom:1.5rem;border-radius:2px}
+    h1{font-family:var(--font-head);font-size:clamp(2.5rem,5vw,4rem);font-weight:800;color:var(--white);letter-spacing:-0.03em;margin-bottom:1rem;line-height:1.05}
+    h1 em{font-style:normal;color:var(--accent)}
+    .page-sub{font-size:1rem;color:var(--text-muted);max-width:500px;font-weight:300;line-height:1.75}
+    .wrap{max-width:1100px;margin:0 auto;padding:0 2rem 5rem;position:relative;z-index:1}
+
+    /* STATS */
+    .stats-bar{display:flex;align-items:center;gap:2rem;background:var(--bg2);border:1px solid var(--border);border-radius:8px;padding:1.25rem 1.75rem;margin-bottom:2.5rem;flex-wrap:wrap}
+    .stat-item{text-align:center}
+    .stat-num{font-family:var(--font-head);font-size:1.8rem;font-weight:800;color:var(--white);line-height:1}
+    .stat-num span{color:var(--accent)}
+    .stat-label{font-size:0.72rem;color:var(--text-muted);margin-top:0.2rem;font-family:var(--font-mono)}
+    .stat-divider{width:1px;height:40px;background:var(--border)}
+    .stat-stars{font-size:1.1rem;color:#fbbf24;letter-spacing:2px}
+
+    /* FORM */
+    .form-section{background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:2.5rem;margin-bottom:3rem;position:relative;overflow:hidden}
+    .form-section::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--accent),var(--accent2))}
+    .form-section h2{font-family:var(--font-head);font-size:1.3rem;font-weight:800;color:var(--white);margin-bottom:0.4rem}
+    .form-section>p{font-size:0.88rem;color:var(--text-muted);margin-bottom:2rem}
+    .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem}
+    .form-group{display:flex;flex-direction:column;gap:0.5rem}
+    .form-group.full{grid-column:1/-1}
+    label{font-size:0.75rem;font-weight:600;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.08em;font-family:var(--font-mono)}
+    input,textarea,select{width:100%;background:var(--bg3);border:1px solid var(--border);color:var(--text);font-family:var(--font-body);font-size:0.9rem;padding:0.8rem 1rem;border-radius:var(--radius);outline:none;transition:border-color 0.2s}
+    input:focus,textarea:focus,select:focus{border-color:var(--accent);box-shadow:0 0 0 3px rgba(255,102,0,0.1)}
+    textarea{resize:vertical;min-height:110px;line-height:1.6}
+    select option{background:var(--bg2)}
+
+    /* STAR PICKER */
+    .star-picker{display:flex;gap:0.3rem;flex-direction:row-reverse;justify-content:flex-end;padding:0.4rem 0}
+    .star-picker input[type="radio"]{display:none}
+    .star-picker label{font-size:1.8rem;color:var(--border);cursor:pointer;transition:color 0.15s;padding:0;text-transform:none;letter-spacing:0;font-family:inherit;font-weight:normal;line-height:1}
+    .star-picker input[type="radio"]:checked ~ label,
+    .star-picker label:hover,
+    .star-picker label:hover ~ label{color:#fbbf24}
+
+    /* REVIEWS */
+    .reviews-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem;margin-bottom:2rem}
+    .review-card{background:var(--bg2);border:1px solid var(--border);border-radius:8px;padding:1.5rem;transition:all 0.2s;display:flex;flex-direction:column;gap:0.75rem;position:relative;overflow:hidden}
+    .review-card::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--accent),transparent);opacity:0;transition:opacity 0.2s}
+    .review-card:hover{border-color:rgba(255,102,0,0.3);transform:translateY(-2px)}
+    .review-card:hover::after{opacity:1}
+    @keyframes slideIn{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+    .review-card.new-card{animation:slideIn 0.4s ease}
+    .stars{color:#fbbf24;font-size:1rem;letter-spacing:2px}
+    .review-service{display:inline-block;background:rgba(255,102,0,0.08);border:1px solid rgba(255,102,0,0.15);color:var(--accent);font-size:0.7rem;font-family:var(--font-mono);padding:0.15rem 0.5rem;border-radius:3px;letter-spacing:0.04em;width:fit-content}
+    .review-text{font-size:0.9rem;color:var(--text-muted);line-height:1.65;flex:1}
+    .reviewer{display:flex;align-items:center;gap:0.75rem;margin-top:0.25rem}
+    .reviewer-avatar{width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--accent2));display:flex;align-items:center;justify-content:center;font-family:var(--font-head);font-weight:800;font-size:0.85rem;color:#fff;flex-shrink:0}
+    .reviewer-name{font-family:var(--font-head);font-size:0.9rem;font-weight:700;color:var(--white)}
+    .reviewer-meta{font-size:0.75rem;color:var(--text-dim)}
+
+    /* LOADING */
+    .loading{text-align:center;padding:3rem;color:var(--text-muted);font-size:0.9rem}
+    .loading-spinner{display:inline-block;width:24px;height:24px;border:2px solid var(--border);border-top-color:var(--accent);border-radius:50%;animation:spin 0.8s linear infinite;margin-bottom:0.75rem}
+    @keyframes spin{to{transform:rotate(360deg)}}
+
+    .empty-state{text-align:center;padding:3rem;color:var(--text-muted);font-size:0.9rem;background:var(--bg2);border:1px solid var(--border);border-radius:8px;grid-column:1/-1}
+
+    .btn{display:inline-flex;align-items:center;gap:0.5rem;padding:0.85rem 1.8rem;border-radius:var(--radius);font-weight:600;font-size:0.9rem;text-decoration:none;cursor:pointer;border:none;transition:all 0.22s;font-family:var(--font-body)}
+    .btn-primary{background:var(--accent);color:#fff}
+    .btn-primary:hover{background:var(--accent2);transform:translateY(-1px);box-shadow:0 8px 28px rgba(255,102,0,0.35)}
+    .btn-primary:disabled{opacity:0.6;cursor:not-allowed;transform:none;box-shadow:none}
+    .btn-full{width:100%;justify-content:center;margin-top:0.75rem}
+    .success-msg{display:none;background:rgba(34,197,94,0.1);border:1px solid rgba(34,197,94,0.3);border-radius:6px;padding:1rem;color:#4ade80;font-size:0.88rem;margin-top:1rem;text-align:center}
+    .error-msg{display:none;background:rgba(239,68,68,0.1);border:1px solid rgba(239,68,68,0.3);border-radius:6px;padding:1rem;color:#f87171;font-size:0.88rem;margin-top:1rem;text-align:center}
+
+    footer{background:var(--bg2);border-top:1px solid var(--border);padding:3rem 2rem 2rem;position:relative;z-index:1}
+    .footer-inner{max-width:1100px;margin:0 auto}
+    .footer-top{display:flex;justify-content:space-between;align-items:flex-start;gap:2rem;flex-wrap:wrap;margin-bottom:2rem}
+    .footer-brand h2{font-family:var(--font-head);font-size:1.1rem;font-weight:800;color:var(--white);margin-bottom:0.4rem}
+    .footer-brand p{font-size:0.82rem;color:var(--text-muted);max-width:240px}
+    .footer-links{display:flex;gap:2.5rem;flex-wrap:wrap}
+    .footer-col h4{font-size:0.7rem;color:var(--white);text-transform:uppercase;letter-spacing:0.12em;margin-bottom:1rem;font-family:var(--font-mono)}
+    .footer-col ul{list-style:none}
+    .footer-col ul li{margin-bottom:0.4rem}
+    .footer-col ul li a{font-size:0.82rem;color:var(--text-muted);text-decoration:none;transition:color 0.2s}
+    .footer-col ul li a:hover{color:var(--accent)}
+    .social-links{display:flex;gap:0.6rem;margin-top:1rem}
+    .social-link{width:32px;height:32px;display:flex;align-items:center;justify-content:center;background:var(--bg3);border:1px solid var(--border);border-radius:var(--radius);color:var(--text-muted);text-decoration:none;font-size:0.75rem;transition:all 0.2s}
+    .social-link:hover{border-color:var(--accent);color:var(--accent)}
+    .footer-bottom{padding-top:1.5rem;border-top:1px solid var(--border);display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem}
+    .footer-bottom p{font-size:0.78rem;color:var(--text-dim)}
+    .footer-bottom a{color:var(--text-dim);text-decoration:none;transition:color 0.2s}
+    .footer-bottom a:hover{color:var(--accent)}
+
+    @media(max-width:768px){
+      .nav-links{display:none}
+      .nav-links.open{display:flex;flex-direction:column;position:fixed;top:64px;left:0;right:0;background:var(--bg2);border-bottom:1px solid var(--border);padding:1.5rem;gap:0.5rem}
+      .nav-toggle{display:block}
+      .reviews-grid{grid-template-columns:1fr 1fr}
+      .form-grid{grid-template-columns:1fr}
+      .form-group.full{grid-column:1}
+      .stat-divider{display:none}
+    }
+    @media(max-width:480px){.reviews-grid{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+
+<div class="hero-grid"></div>
+
+<nav>
+  <a href="index.html" class="nav-logo">Angelo<span>.</span>Repairs</a>
+  <button class="nav-toggle" onclick="document.querySelector('.nav-links').classList.toggle('open')"><span></span><span></span><span></span></button>
+  <ul class="nav-links">
+    <li><a href="index.html">Accueil</a></li>
+    <li><a href="services.html">Services</a></li>
+    <li><a href="tarifs.html">Tarifs</a></li>
+    <li><a href="contact.html">Contact</a></li>
+    <li><a href="comment-ca-marche.html">Comment ça marche</a></li>
+    <li><a href="avis.html" class="active">Avis</a></li>
+    <li><a href="faq.html">FAQ</a></li>
+  </ul>
+</nav>
+
+<div class="page-header">
+  <p class="section-label">// Retours clients</p>
+  <div class="accent-line"></div>
+  <h1>Avis <em>clients</em></h1>
+  <p class="page-sub">Ce que disent les personnes qui m'ont fait confiance pour réparer leurs appareils.</p>
+</div>
+
+<div class="wrap">
+
+  <!-- STATS -->
+  <div class="stats-bar">
+    <div class="stat-item">
+      <div class="stat-num" id="total-count">—</div>
+      <div class="stat-label">AVIS CLIENTS</div>
+    </div>
+    <div class="stat-divider"></div>
+    <div class="stat-item">
+      <div class="stat-stars" id="avg-stars">★★★★★</div>
+      <div class="stat-label">NOTE MOYENNE</div>
+    </div>
+    <div class="stat-divider"></div>
+    <div class="stat-item">
+      <div class="stat-num">100<span>%</span></div>
+      <div class="stat-label">RECOMMANDENT</div>
+    </div>
+  </div>
+
+  <!-- FORMULAIRE -->
+  <div class="form-section">
+    <h2>⭐ Laisser un avis</h2>
+    <p>Vous avez fait appel à Angelo Repairs ? Partagez votre expérience !</p>
+    <div class="form-grid">
+      <div class="form-group">
+        <label>Nom / Prénom *</label>
+        <input type="text" id="r-nom" placeholder="Ex : Marie Dupont">
+      </div>
+      <div class="form-group">
+        <label>Ville *</label>
+        <input type="text" id="r-ville" placeholder="Ex : Cadenet">
+      </div>
+      <div class="form-group">
+        <label>Service effectué *</label>
+        <select id="r-service">
+          <option value="">Sélectionner…</option>
+          <option>Réinstallation Windows / Linux</option>
+          <option>Optimisation système</option>
+          <option>Suppression virus</option>
+          <option>Nettoyage interne</option>
+          <option>Remplacement SSD / HDD / RAM</option>
+          <option>Changement pâte thermique</option>
+          <option>Remplacement batterie</option>
+          <option>Réparation écran téléphone</option>
+          <option>Autre réparation téléphone</option>
+          <option>Autre</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Note *</label>
+        <div class="star-picker">
+          <input type="radio" name="note" id="s5" value="5"><label for="s5">★</label>
+          <input type="radio" name="note" id="s4" value="4"><label for="s4">★</label>
+          <input type="radio" name="note" id="s3" value="3"><label for="s3">★</label>
+          <input type="radio" name="note" id="s2" value="2"><label for="s2">★</label>
+          <input type="radio" name="note" id="s1" value="1"><label for="s1">★</label>
+        </div>
+      </div>
+      <div class="form-group full">
+        <label>Votre commentaire *</label>
+        <textarea id="r-commentaire" placeholder="Décrivez votre expérience avec Angelo Repairs…"></textarea>
+      </div>
+    </div>
+    <button class="btn btn-primary btn-full" id="submit-btn" onclick="submitReview()">Publier mon avis →</button>
+    <div class="success-msg" id="review-success">✅ Merci pour votre avis ! Il est maintenant visible par tout le monde.</div>
+    <div class="error-msg" id="review-error">❌ Une erreur s'est produite. Réessayez dans quelques instants.</div>
+  </div>
+
+  <!-- AVIS -->
+  <p class="section-label" style="margin-bottom:1.25rem">// Tous les avis</p>
+  <div class="reviews-grid" id="reviews-grid">
+    <div class="loading" style="grid-column:1/-1">
+      <div class="loading-spinner"></div><br>Chargement des avis…
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <h2>Angelo<span style="color:var(--accent)">.</span>Repairs</h2>
+        <p>Dépannage informatique à Cadenet (84), Vaucluse.</p>
+        <div class="social-links">
+          <a href="https://www.youtube.com/@Angelo-Repairs" class="social-link">▶</a>
+          <a href="https://www.instagram.com/angelo_repairs/" class="social-link">📷</a>
+          <a href="https://www.tiktok.com/@angelo_repairs_84" class="social-link">♪</a>
+        </div>
+      </div>
+      <div class="footer-links">
+        <div class="footer-col"><h4>Navigation</h4><ul>
+          <li><a href="index.html">Accueil</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="tarifs.html">Tarifs</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul></div>
+        <div class="footer-col"><h4>Infos</h4><ul>
+          <li><a href="faq.html">FAQ</a></li>
+          <li><a href="mentions-legales.html">Mentions légales</a></li>
+        </ul></div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 Angelo Repairs.</p>
+      <p><a href="mentions-legales.html">Mentions légales</a> · <a href="politique-confidentialite.html">Confidentialité</a></p>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const SUPABASE_URL = 'https://obrbaxctkqplddzignnu.supabase.co';
+  const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9icmJheGN0a3FwbGRkemlnbm51Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzM0MTU0MjksImV4cCI6MjA4ODk5MTQyOX0.mC-b41CAfV6Cgyfw1SlUHZQIgL-HFTVTSVMCeo2oP5o';
+
+  // Avis de base toujours affichés
+  const baseReviews = [{
+    nom: 'Mélanie Lopez', ville: '', service: '',
+    note: 5, commentaire: 'Très rapide et efficace. Excellent rapport qualité/prix. Je recommande !',
+    created_at: '2026-02-14T00:00:00Z'
+  }];
+
+  function starsHTML(n) {
+    return '★'.repeat(n) + '☆'.repeat(5 - n);
+  }
+
+  function timeAgo(dateStr) {
+    const diff = Math.floor((Date.now() - new Date(dateStr)) / 1000);
+    if (diff < 60) return "À l'instant";
+    if (diff < 3600) return `Il y a ${Math.floor(diff/60)} min`;
+    if (diff < 86400) return `Il y a ${Math.floor(diff/3600)}h`;
+    if (diff < 2592000) return `Il y a ${Math.floor(diff/86400)} jour(s)`;
+    if (diff < 31536000) return `Il y a ${Math.floor(diff/2592000)} mois`;
+    return `Il y a ${Math.floor(diff/31536000)} an(s)`;
+  }
+
+  function createCard(review, isNew = false) {
+    const card = document.createElement('div');
+    card.className = 'review-card' + (isNew ? ' new-card' : '');
+    const initial = review.nom.charAt(0).toUpperCase();
+    const meta = [review.ville, timeAgo(review.created_at)].filter(Boolean).join(' · ');
+    const starColor = review.note >= 4 ? '#fbbf24' : review.note >= 3 ? '#f97316' : '#ef4444';
+    card.innerHTML = `
+      <div class="stars" style="color:${starColor}">${starsHTML(review.note)}</div>
+      ${review.service ? `<span class="review-service">${review.service}</span>` : ''}
+      <p class="review-text">${review.commentaire}</p>
+      <div class="reviewer">
+        <div class="reviewer-avatar">${initial}</div>
+        <div>
+          <div class="reviewer-name">${review.nom}</div>
+          <div class="reviewer-meta">${meta}</div>
+        </div>
+      </div>`;
+    return card;
+  }
+
+  async function loadReviews() {
+    const grid = document.getElementById('reviews-grid');
+    try {
+      const res = await fetch(`${SUPABASE_URL}/rest/v1/avis?order=created_at.desc`, {
+        headers: {
+          'apikey': SUPABASE_KEY,
+          'Authorization': `Bearer ${SUPABASE_KEY}`
+        }
+      });
+      const data = await res.json();
+      const all = [...baseReviews, ...(Array.isArray(data) ? data : [])];
+
+      grid.innerHTML = '';
+      if (all.length === 0) {
+        grid.innerHTML = '<div class="empty-state">Aucun avis pour le moment. Soyez le premier !</div>';
+      } else {
+        all.forEach(r => grid.appendChild(createCard(r)));
+      }
+
+      // Update stats
+      document.getElementById('total-count').textContent = all.length;
+      const avg = all.reduce((s, r) => s + r.note, 0) / all.length;
+      document.getElementById('avg-stars').textContent = '★'.repeat(Math.round(avg)) + '☆'.repeat(5 - Math.round(avg));
+
+    } catch (e) {
+      grid.innerHTML = '<div class="empty-state">Impossible de charger les avis. Réessayez plus tard.</div>';
+    }
+  }
+
+  async function submitReview() {
+    const nom = document.getElementById('r-nom').value.trim();
+    const ville = document.getElementById('r-ville').value.trim();
+    const service = document.getElementById('r-service').value;
+    const commentaire = document.getElementById('r-commentaire').value.trim();
+    const noteEl = document.querySelector('input[name="note"]:checked');
+
+    if (!nom || !ville || !service || !commentaire || !noteEl) {
+      alert('Veuillez remplir tous les champs et choisir une note ⭐');
+      return;
+    }
+
+    const btn = document.getElementById('submit-btn');
+    btn.disabled = true;
+    btn.textContent = 'Publication en cours…';
+    document.getElementById('review-success').style.display = 'none';
+    document.getElementById('review-error').style.display = 'none';
+
+    try {
+      const res = await fetch(`${SUPABASE_URL}/rest/v1/avis`, {
+        method: 'POST',
+        headers: {
+          'apikey': SUPABASE_KEY,
+          'Authorization': `Bearer ${SUPABASE_KEY}`,
+          'Content-Type': 'application/json',
+          'Prefer': 'return=minimal'
+        },
+        body: JSON.stringify({ nom, ville, service, note: parseInt(noteEl.value), commentaire })
+      });
+
+      if (res.ok || res.status === 201) {
+        document.getElementById('r-nom').value = '';
+        document.getElementById('r-ville').value = '';
+        document.getElementById('r-service').value = '';
+        document.getElementById('r-commentaire').value = '';
+        document.querySelectorAll('input[name="note"]').forEach(i => i.checked = false);
+        document.getElementById('review-success').style.display = 'block';
+        setTimeout(() => document.getElementById('review-success').style.display = 'none', 5000);
+        await loadReviews();
+        document.getElementById('reviews-grid').scrollIntoView({ behavior: 'smooth' });
+      } else {
+        document.getElementById('review-error').style.display = 'block';
+      }
+    } catch (e) {
+      document.getElementById('review-error').style.display = 'block';
+    }
+
+    btn.disabled = false;
+    btn.textContent = 'Publier mon avis →';
+  }
+
+  // Charger les avis au démarrage
+  loadReviews();
+</script>
+
+</body>
+</html>
